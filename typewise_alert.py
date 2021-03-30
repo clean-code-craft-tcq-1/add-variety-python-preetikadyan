@@ -1,4 +1,9 @@
 
+CoolingTypeLimit = { 'PASSIVE_COOLING': {'lowerLimit': 0,'upperLimit':35},
+                     'HI_ACTIVE_COOLING': {'lowerLimit': 0,'upperLimit':45},
+                     'MED_ACTIVE_COOLING': {'lowerLimit': 0,'upperLimit':40}
+                   }
+
 def infer_breach(value, lowerLimit, upperLimit):
   if value < lowerLimit:
     return 'TOO_LOW'
@@ -8,18 +13,8 @@ def infer_breach(value, lowerLimit, upperLimit):
 
 
 def classify_temperature_breach(coolingType, temperatureInC):
-  lowerLimit = 0
-  upperLimit = 0
-  if coolingType == 'PASSIVE_COOLING':
-    lowerLimit = 0
-    upperLimit = 35
-  elif coolingType == 'HI_ACTIVE_COOLING':
-    lowerLimit = 0
-    upperLimit = 45
-  elif coolingType == 'MED_ACTIVE_COOLING':
-    lowerLimit = 0
-    upperLimit = 40
-  return infer_breach(temperatureInC, lowerLimit, upperLimit)
+  coolingType_range = CoolingTypeLimit[coolingType]
+  return infer_breach(temperatureInC, coolingType_range['lowerLimit'], coolingType_range['upperLimit'])
 
 
 def check_and_alert(alertTarget, batteryChar, temperatureInC):
