@@ -18,8 +18,7 @@ def classify_temperature_breach(coolingType, temperatureInC):
 
 def check_and_alert(alertTarget, batteryChar, temperatureInC):
   breachType = classify_temperature_breach(batteryChar['coolingType'], temperatureInC)
-  alert = ('TO_CONTROLLER','TO_EMAIL','TO_CONSOLE')
-  for i in alert:
+  for alertTarget in Alert_Target.keys():
     Alert_Target[alertTarget](breachType)
     return True
 
