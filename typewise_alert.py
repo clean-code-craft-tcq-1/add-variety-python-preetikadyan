@@ -11,21 +11,17 @@ def infer_breach(value, lowerLimit, upperLimit):
     return 'TOO_HIGH'
   return 'NORMAL'
 
-
 def classify_temperature_breach(coolingType, temperatureInC):
   coolingType_range = CoolingTypeLimit[coolingType]
   return infer_breach(temperatureInC, coolingType_range['lowerLimit'], coolingType_range['upperLimit'])
 
 
 def check_and_alert(alertTarget, batteryChar, temperatureInC):
-  breachType =\
-    classify_temperature_breach(batteryChar['coolingType'], temperatureInC)
-  if alertTarget == 'TO_CONTROLLER':
-    send_to_controller(breachType)
-  if alertTarget == 'TO_EMAIL':
-    send_to_email(breachType)
-  if alertTarget == 'TO_CONSOLE':
-    send_to_console(breachType)
+  breachType = classify_temperature_breach(batteryChar['coolingType'], temperatureInC)
+  alert = ('TO_CONTROLLER','TO_EMAIL','TO_CONSOLE')
+  for i in alert:
+    Alert_Target[alertTarget](breachType)
+    return True
 
 def send_to_controller(breachType):
   print(f'BreachType: {breachType}')
@@ -41,4 +37,8 @@ def send_to_email(breachType):
 
 def send_to_console(breachType):
   print(f'BreachType: {breachType}')
+  
+Alert_Target = { 'TO_CONTROLLER': send_to_controller,
+                'TO_EMAIL': send_to_email,
+                'TO_CONSOLE': send_to_console }
     
