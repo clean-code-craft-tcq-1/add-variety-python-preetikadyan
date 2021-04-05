@@ -23,8 +23,7 @@ def check_and_alert(alertTarget, batteryChar, temperatureInC):
     return True
 
 def send_to_controller(breachType):
-  return breachType
-  #print(f'BreachType: {breachType}')
+  print(f'BreachType: {breachType}')
 
 def send_to_email(breachType):
   recepient = "a.b@c.com"
@@ -36,8 +35,7 @@ def send_to_email(breachType):
     print('Hi, the temperature is too high')
 
 def send_to_console(breachType):
-  return breachType
-  #print(f'BreachType: {breachType}')
+  print(f'BreachType: {breachType}')
   
 Alert_Target = { 'TO_CONTROLLER': send_to_controller,
                 'TO_EMAIL': send_to_email,
