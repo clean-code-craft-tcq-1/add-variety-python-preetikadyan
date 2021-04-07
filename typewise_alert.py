@@ -25,7 +25,10 @@ def check_and_alert(alertTarget, batteryChar, temperatureInC):
   if alertTarget in Alert_Target.keys():
     Alert_Target[alertTarget](breachType)
     return True
-  return False
+  if alertTraget == '':
+    return 'EMPTY'
+  else:
+    return 'Not Valid'
 
 def send_to_controller(breachType):
   print(f'BreachType: {breachType}')
