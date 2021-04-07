@@ -31,7 +31,7 @@ def send_to_controller(breachType):
   print(f'BreachType: {breachType}')
 
 def send_to_email(breachType):
-  print(f'Hi {EMailInfo[breachType]['Recepient']} the temperature is {breachType}')
+  print(f'Hi {EMailInfo[breachType][Recepient]} the temperature is {breachType}')
 
 def send_to_console(breachType):
   print(f'BreachType: {breachType}')
