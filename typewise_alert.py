@@ -25,7 +25,7 @@ def check_and_alert(alertTarget, batteryChar, temperatureInC):
   if alertTarget in Alert_Target.keys():
     Alert_Target[alertTarget](breachType)
     return True
-  if alertTraget == '':
+  if alertTraget is None:
     return 'EMPTY'
   else:
     return 'Not Valid'
