@@ -16,8 +16,9 @@ def infer_breach(value, lowerLimit, upperLimit):
   return 'NORMAL'
 
 def classify_temperature_breach(coolingType, temperatureInC):
-  coolingType_range = CoolingTypeLimit[coolingType]
-  return infer_breach(temperatureInC, coolingType_range['lowerLimit'], coolingType_range['upperLimit'])
+  if coolingType in CoolingTypeLimit.keys():
+     coolingType_range = CoolingTypeLimit[coolingType]
+     return infer_breach(temperatureInC, coolingType_range['lowerLimit'], coolingType_range['upperLimit'])
 
 
 def check_and_alert(alertTarget, batteryChar, temperatureInC):
