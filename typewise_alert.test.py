@@ -16,8 +16,8 @@ class TypewiseTest(unittest.TestCase):
     self.assertTrue(typewise_alert.classify_temperature_breach('',20) == 'INVALID_COOLING_TYPE')
     
   def test_empty_or_wrong_alert_target(self):
-    self.assertTrue(typewise_alert.check_and_alert('TO_MAIL',{'coolingType':'MED_ACTIVE_COOLING'},50)== 'INVALID_ALERT_TYPE')
-    self.assertTrue(typewise_alert.check_and_alert('',{'coolingType':'MED_ACTIVE_COOLING'},50)== 'INVALID_ALERT_TYPE')
+    self.assertTrue(typewise_alert.check_and_alert('TO_MAIL',{'coolingType':'MED_ACTIVE_COOLING'},50)== 'INVALID_ALERT_TARGET')
+    self.assertTrue(typewise_alert.check_and_alert('',{'coolingType':'MED_ACTIVE_COOLING'},50)== 'INVALID_ALERT_TARGET')
     
   def test_check_and_alert(self):
     self.assertTrue(typewise_alert.check_and_alert('TO_CONTROLLER',{'coolingType':'PASSIVE_COOLING'},70)== 'CONTROLLER_CALLED')
