@@ -50,8 +50,9 @@ def classify_temperature_breach(coolingType, temperatureInC):
 def check_and_alert(alertTarget, batteryChar, temperatureInC):
   breachType = classify_temperature_breach(batteryChar['coolingType'], temperatureInC)
   if alertTarget in Alert_Target.keys():
-    Alert_Target[alertTarget](breachType)
-  return False
+    return Alert_Target[alertTarget](breachType)
+  else:
+    return False
 
 def send_to_controller(breachType):
   return send_controller(compose_controller(breachType),breachType)
