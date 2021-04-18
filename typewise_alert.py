@@ -29,7 +29,7 @@ def send_email(emailContent):
    return email_handle(emailContent)
 
 def send_controller(controllerContent,breachType):
-    print(f' BreachType: {breachType}action: {controllerContent}')
+    print(f' BreachType: {breachType} action: {controllerContent}')
     return 'CONTROLLER_CALLED'
 
 def infer_breach(value, lowerLimit, upperLimit):
