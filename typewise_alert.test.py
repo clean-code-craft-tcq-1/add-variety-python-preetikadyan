@@ -21,7 +21,7 @@ class TypewiseTest(unittest.TestCase):
     
   def test_check_and_alert(self):
     self.assertTrue(typewise_alert.check_and_alert('TO_CONTROLLER',{'coolingType':'PASSIVE_COOLING'},70)== 'CONTROLLER_CALLED')
-    self.assertTrue(typewise_alert.check_and_alert('TO_CONSOLE',{'coolingType':'HI_ACTIVE_COOLING'},-10)== True)
+    self.assertTrue(typewise_alert.check_and_alert('TO_CONSOLE',{'coolingType':'HI_ACTIVE_COOLING'},-10)== 'CONSOLE_CALLED')
     self.assertTrue(typewise_alert.check_and_alert('TO_EMAIL',{'coolingType':'MED_ACTIVE_COOLING'},50)== 'EMAIL_SENT')
       
 
