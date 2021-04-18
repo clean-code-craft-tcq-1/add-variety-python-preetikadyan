@@ -44,7 +44,7 @@ def classify_temperature_breach(coolingType, temperatureInC):
      coolingType_range = CoolingTypeLimit[coolingType]
      return infer_breach(temperatureInC, coolingType_range['lowerLimit'], coolingType_range['upperLimit'])
   else:
-    return False
+    return 'INVALID_COOLING_TYPE'
 
 
 def check_and_alert(alertTarget, batteryChar, temperatureInC):
@@ -52,7 +52,7 @@ def check_and_alert(alertTarget, batteryChar, temperatureInC):
   if alertTarget in Alert_Target.keys():
     return Alert_Target[alertTarget](breachType)
   else:
-    return False
+    return 'INVALID_ALERT_TARGET'
 
 def send_to_controller(breachType):
   return send_controller(compose_controller(breachType),breachType)
