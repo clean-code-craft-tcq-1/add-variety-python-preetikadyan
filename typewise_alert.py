@@ -61,7 +61,7 @@ def send_to_email(breachType):
   return send_email(compose_email(breachType))
 
 def send_to_console(breachType):
-  print(f 'Console Called --> BreachType: {breachType}')
+  print(f' Console Called --> BreachType: {breachType}')
   return 'CONSOLE_CALLED'
   
 Alert_Target = { 'TO_CONTROLLER': send_to_controller,
