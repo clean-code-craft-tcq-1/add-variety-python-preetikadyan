@@ -32,4 +32,4 @@ jobs:
         with:
           name: coverage
           path: ./htmlcov
-          retention-days: 1
+          retention-days: 60
